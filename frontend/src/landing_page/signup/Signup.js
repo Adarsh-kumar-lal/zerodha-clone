@@ -32,7 +32,7 @@ function Signup() {
     try {
       if (isLogin) {
         // ⭐ LOGIN API
-        const res = await axios.post("http://localhost:3002/api/auth/login", {
+        const res = await axios.post("https://zerodha-clone-backend-0o4k.onrender.com//api/auth/login", {
           email: formData.email,
           password: formData.password,
         });
@@ -50,7 +50,7 @@ function Signup() {
         }, 1200);
       } else {
         // ⭐ SIGNUP API
-        await axios.post("http://localhost:3002/api/auth/signup", formData);
+        await axios.post("https://zerodha-clone-backend-0o4k.onrender.com//api/auth/signup", formData);
 
         toast.success("Account Created Successfully 🎉");
 
