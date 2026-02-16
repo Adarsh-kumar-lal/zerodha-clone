@@ -194,6 +194,11 @@ app.use("/api/auth", authRoutes);
 //   res.send("Done!");
 // });
 
+app.get("/", (req, res) => {
+  res.send("Backend Running 🚀");
+});
+
+
 app.get("/allHoldings", async (req, res) => {
   let allHoldings = await HoldingsModel.find({});
   res.json(allHoldings);
