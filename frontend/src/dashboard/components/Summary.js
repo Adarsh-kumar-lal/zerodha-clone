@@ -1,10 +1,38 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { jwtDecode } from "jwt-decode";
 
 const Summary = () => {
+  const [userName, setUserName] = useState("User");
+
+  useEffect(() => {
+    
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      try {
+        
+        const decoded = jwtDecode(token);
+
+        let nameToDisplay = decoded.name || decoded.email || "User";
+
+        if (nameToDisplay.includes("@")) {
+          nameToDisplay = nameToDisplay.split("@")[0];
+        }
+
+        
+        const formattedName = nameToDisplay.charAt(0).toUpperCase() + nameToDisplay.slice(1);
+        
+        setUserName(formattedName);
+      } catch (err) {
+        console.error("Error decoding token in Summary component:", err);
+      }
+    }
+  }, []);
+
   return (
     <>
       <div className="username">
-        <h6>Hi, User!</h6>
+        <h6>Hi, {userName}!</h6>
         <hr className="divider" />
       </div>
 
