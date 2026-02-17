@@ -40,7 +40,7 @@ function Signup() {
         // ⭐ Save Token
         localStorage.setItem("token", res.data.token);
 
-        console.log("Saved Token:", localStorage.getItem("token"));
+        // console.log("Saved Token:", localStorage.getItem("token"));
 
         toast.success("Login Successful 🚀");
 
